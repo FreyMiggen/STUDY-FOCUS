@@ -3,8 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let cloudWidth = cloudBunch.getBoundingClientRect().width; // 
     // Variable position: leftest point of the flying cloud
     let position = 0; // 
-    console.log(`INITIAL POSITION: ${position}`);
-    console.log(`CLOUD WIDTH: ${cloudWidth}`);
     const speed = 0.01; // Pixels per frame
 
     function moveCloud() {
