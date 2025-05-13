@@ -1,0 +1,198 @@
+/* Set full background image */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(rgba(154, 189, 241, 0.3), rgba(154, 189, 241, 0.3)), 
+                url('../images/day_background.jpg') center/cover no-repeat; /* Adjust the path if needed */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Countdown clock styling */
+.main-clock{
+    display: flex;
+    align-items: center; /* Vertically center the countdown and bell */
+    justify-content: center; /* Horizontally center the contents */
+    gap: 10px; /* Space between countdown and bell */
+    margin-bottom: 20px;
+}
+.countdown {
+    font-size: 100px;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    margin:0;
+    
+}
+.bell{
+    display:flex;
+    align-items:center;
+}
+
+.btn-list{
+    display:flex;
+    gap:10px;
+}
+
+/* Button styling */
+.btn {
+    padding: 15px 30px;
+    font-size: 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5); /* White with 50% opacity */
+    color: black;
+    transition: background-color 0.3s ease;
+    backdrop-filter: blur(4px); /* Optional: glass-like effect */
+}
+
+
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.7); /* Slightly more visible on hover */
+}
+
+
+button:disabled,
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none; /* Optional: fully prevent interaction */
+    background-color: rgba(255, 255, 255, 0.3); /* Slightly more transparent */
+    color: #666; /* Muted text */
+}
+
+
+.music-control {
+    font-size: 2em;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #333;
+    margin: 20px;
+}
+.music-control:hover {
+    color: #007bff;
+}
+.trans-btn-control{
+    background-color: transparent;
+    color:transparent;
+    border:none;
+    cursor: pointer;
+    
+}
+
+#bell-icon{
+
+    width:70px;
+    height:70px;
+    background-color:transparent;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+}
+
+.grass {
+    width: 650px;
+    height: 130px;
+    background: url('../images/img_grass.png') no-repeat center/cover;
+    position: relative; /* Makes grass the positioning context for totoro */
+    margin-top:30px;
+}
+
+.totoro {
+    background: url('../images/totoro_walking.gif') no-repeat center/cover;
+    width: 120px;
+    height: 120px;
+    transform: scaleX(-1);
+    position: absolute; /* Changed from relative to absolute */
+    bottom: 40px; /* Matches your margin-top: -155px (130px - 100px + 25px) */
+    left: 0px;
+    z-index: -10; /* Ensures totoro is behind grass */
+}
+
+.disc-playing{
+    justify-content: left;
+    position:absolute;
+    left: 30px;
+    bottom:30px;
+    display: flex;
+}
+
+#disc-icon{
+    width:70px;
+    height: 70px;
+    background-color: transparent;
+
+}
+
+#music-key-icon{
+    width:30px;
+    height: 60px;
+    background-color: none;
+}
+
+
+#audio-player {
+   
+    opacity: 0; /* Hidden */
+    transition: width 2s ease, opacity 2s ease;
+    pointer-events: none; /* Prevent interaction when hidden */
+
+}
+
+#audio-player.visible {
+    width: 400px; /* Full width of <audio controls> (adjust as needed) */
+    opacity: 1;
+    pointer-events: auto;
+    
+
+}
+
+.cloud-1{
+    position:absolute;
+    background: url('../images/cloud_flying.png') no-repeat center/contain;
+    height:20vh;
+    width: 30vw;
+    top:-2vh;
+    left:70%;
+    
+}
+
+
+.cloud-2{
+    position:absolute;
+    background: url('../images/cloud_2.png') no-repeat center/contain;
+    height:20vh;
+    width:40vw;
+    top:-1vh;
+    left:30%
+}
+
+.cloud-3{
+    position:absolute;
+    background: url('../images/cloud_6.png') no-repeat center/contain;
+    height:20vh;
+    width: 40vw;
+    top:0vh;
+    left:15%;
+    transform:translateX(-50%);
+    
+}
+
+.cloud-flying{
+    position:absolute;
+    background: url('../images/cloud_1.png') no-repeat center/contain;
+    height:20vh;
+    width: 40vw;
+    top:3vh;
+    left:20%;
+    transform:translateX(-50%);
+    
+}
+

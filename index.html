@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Focus - Frey</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <!-- <script src="js/totoro.js"></script> -->
+        <script src="js/clock_new.js"></script>
+        <script src="js/play_music_simple.js"></script>
+    </head>
+    <body>
+        <div class="clouds">
+            <div class="cloud-1"></div>
+            <div class="cloud-2"></div>
+            <div class="cloud-3"></div>
+            <div class="cloud-flying"></div>
+        </div>
+        <div class="main-clock">
+            <h1 class="countdown">25:00</h1>
+            <div class="bell">
+            <!-- Audio element for bell-->
+                <button class="trans-btn-control" id="bell-toggle">
+                    <img src="images/alarm_clock.png" id="bell-icon" alt="Alarm clock icon">
+                </button>
+                <audio id="ring-alarm" preload="auto"></audio>
+            </div>
+
+
+        </div>
+        
+        <div class="btn-list">
+            <button class="btn btn-start" type="button">START</button>
+            <button class="btn btn-pause" type="button" disabled="true"> PAUSE</button>
+
+        </div>
+        
+        <!-- Music icon button -->
+        <!-- <button class="music-control" id="music-toggle">
+            <i class="fas fa-play"></i>
+        </button> -->
+        <!-- Audio element (can be hidden if not needed) -->
+        <div class="disc-playing">
+            <button class="trans-btn-control" id="disc-control">
+                <img src="images/ghibli_disc_trans.png" id="disc-icon">
+            </button>
+            <button class="trans-btn-control" id="music-control">
+                <img src="images/music_key.png" id="music-key-icon">
+            </button>
+            
+            <audio id="audio-player" controls preload="auto"></audio>
+        </div>
+       
+
+
+        </div>
+        <div class="grass">
+            <div class="totoro"></div>
+        </div>
+        
+
+    </body>
+    
+</html>
