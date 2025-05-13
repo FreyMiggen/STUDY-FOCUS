@@ -12,10 +12,14 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow-x: hidden;
+
+    
 }
 
 /* Countdown clock styling */
 .main-clock{
+    z-index:5;
     display: flex;
     align-items: center; /* Vertically center the countdown and bell */
     justify-content: center; /* Horizontally center the contents */
@@ -27,6 +31,7 @@ body {
     color: white;
     text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
     margin:0;
+    z-index: 10;
     
 }
 .bell{
@@ -154,6 +159,12 @@ button:disabled,
 
 }
 
+.clouds{
+    overflow-x:hidden;
+    z-index: 10;
+}
+
+
 .cloud-1{
     position:absolute;
     background: url('../images/cloud_flying.png') no-repeat center/contain;
@@ -188,11 +199,13 @@ button:disabled,
 .cloud-flying{
     position:absolute;
     background: url('../images/cloud_1.png') no-repeat center/contain;
-    height:20vh;
+    height:25vh;
     width: 40vw;
-    top:3vh;
-    left:20%;
-    transform:translateX(-50%);
+    top:2vh;
+    left:0%;
+    overflow: hidden;
+    z-index: 20;
     
+  
 }
 
