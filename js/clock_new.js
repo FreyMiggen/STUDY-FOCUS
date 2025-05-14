@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded',() =>{
     const bellButton = document.getElementById('bell-toggle');
     const bellIcon = document.getElementById('bell-icon');
     const audioBell = document.getElementById('ring-alarm');
-    const DURATION = 1*60;
+    const DURATION = 30*60;
     let bellInterval;
 
     // Load alarm audio
