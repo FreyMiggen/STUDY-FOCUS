@@ -92,6 +92,14 @@ button:disabled,
     
 }
 
+
+
+@keyframes pulse{
+    0% {transform:scale(1);}
+    50% {transform:scale(1.1);}
+    100% {transform:scale(1);}
+}
+
 #bell-icon{
 
     width:70px;
@@ -100,7 +108,15 @@ button:disabled,
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
+    
+    
 }
+
+#bell-icon:hover{
+    animation:pulse 1s infinite;
+
+}
+
 
 .grass {
     width: 650px;

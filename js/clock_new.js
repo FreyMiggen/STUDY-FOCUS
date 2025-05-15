@@ -126,6 +126,7 @@ document.addEventListener('DOMContentLoaded',() =>{
                 timerInterval = null;
                 timeLeft = DURATION;
                 startButton.textContent = 'START';
+                updateDisplay();
                 // ring the bell
                 if (audioBell.paused){
                     audioBell.play().catch(err=>{
