@@ -60,6 +60,7 @@ document.addEventListener('DOMContentLoaded',() =>{
 
     let timerInterval;
     let timeLeft = DURATION; // 25 minutes in seconds
+    let countdownStartTime;
 
     function updateDisplay() {
         const minutes = Math.floor(timeLeft / 60);
@@ -99,6 +100,7 @@ document.addEventListener('DOMContentLoaded',() =>{
     function startCountdown() {
         console.log('START COUNTDOWN!');
         if (timerInterval) return; // Prevent multiple intervals
+        countdownStartTime = Date.now();
         startButton.disabled = true;
         pauseButton.disabled = false;
         // move totoro
@@ -113,10 +115,10 @@ document.addEventListener('DOMContentLoaded',() =>{
         }
 
         timerInterval = setInterval(() => {
-            if (timeLeft > 0) {
-                timeLeft--;
-                updateDisplay();
-            } else {
+            const elapseSeconds = Math.floor((Date.now()-countdownStartTime)/1000);
+            timeLeft = Math.max(DURATION - elapseSeconds,0);
+            updateDisplay();
+            if (timeLeft <= 0) {
                 
                 clearInterval(timerInterval);
                 startButton.disabled = false;
@@ -124,7 +126,6 @@ document.addEventListener('DOMContentLoaded',() =>{
                 timerInterval = null;
                 timeLeft = DURATION;
                 startButton.textContent = 'START';
-                updateDisplay();
                 // ring the bell
                 if (audioBell.paused){
                     audioBell.play().catch(err=>{
@@ -144,7 +145,7 @@ document.addEventListener('DOMContentLoaded',() =>{
 
 
             }
-        }, 1000);
+        }, 500);
     }
 
     function pauseCountdown(){
