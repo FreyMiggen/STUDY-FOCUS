@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function moveCloud() {
         const windowWidth = window.innerWidth;
         position += speed;
-        console.log(`POSITION: ${position}`);
+        // console.log(`POSITION: ${position}`);
         // When the cloud left edge reach the screen right side -> set position to -cloudWidth 
         if (position >= windowWidth) {
             position = -cloudWidth; // Right edge at -cloudWidth

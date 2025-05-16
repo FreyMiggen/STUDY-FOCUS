@@ -4,11 +4,12 @@ document.addEventListener('DOMContentLoaded',() =>{
     const countdownElement = document.querySelector('.countdown');
     const startButton = document.querySelector('.btn-start');
     const pauseButton = document.querySelector('.btn-pause');
+    const resetButton = document.querySelector('.btn-reset');
 
     const bellButton = document.getElementById('bell-toggle');
     const bellIcon = document.getElementById('bell-icon');
     const audioBell = document.getElementById('ring-alarm');
-    const DURATION = 30*60;
+    let DURATION = 5*60; // default duration
     let bellInterval;
 
     // Load alarm audio
@@ -24,6 +25,19 @@ document.addEventListener('DOMContentLoaded',() =>{
         }
 
     }
+
+    window.addEventListener('durationChanged',(e)=>{
+        DURATION = e.detail.duration; // update duration
+        resetCountDown();
+    })
+
+
+
+    // if ('service' in navigator){
+    //     navigator.serviceWorker.register('js/sw.js')
+    //     .then(reg => console.log('Service Worker registered')
+    //     .catch(err=> console.log('SW registration failed: ',err)));
+    // }
 
     function startBellColorToggle(bellIcon) {
         let isYellow = false; // Local state
@@ -87,6 +101,7 @@ document.addEventListener('DOMContentLoaded',() =>{
                 }
         
         }`;
+    
 
     // Add keyframes to the document
     const styleSheet = document.createElement('style');
@@ -103,6 +118,7 @@ document.addEventListener('DOMContentLoaded',() =>{
         countdownStartTime = Date.now();
         startButton.disabled = true;
         pauseButton.disabled = false;
+        resetButton.disabled = false;
         // move totoro
         if (!totoroStarted){
             // Apply animation to totoro
@@ -165,10 +181,35 @@ document.addEventListener('DOMContentLoaded',() =>{
         }
     }
 
+    function resetCountDown(){
+        console.log('RESET COUNTDOWN');
+        startButton.disabled = false;
+        pauseButton.disabled = true;
+        resetButton.disabled = true;
+
+        // // clear coundown
+        if (timerInterval){
+            clearInterval(timerInterval);
+
+            startButton.textContent = 'START';
+            timerInterval = null;
+            
+        } 
+        // reset totoro
+        totoroStarted = false;
+        totoro.style.animation = null;
+        totoro.style.left = 0;
+
+        // reset timer
+        timeLeft = DURATION;
+        updateDisplay();
+        
+    }
 
 
     startButton.addEventListener('click', startCountdown);
     pauseButton.addEventListener('click',pauseCountdown);
+    resetButton.addEventListener('click',resetCountDown);
     updateDisplay(); // Initialize display
 
  

@@ -8,8 +8,29 @@
         <script src="js/clock_new.js"></script>
         <script src="js/play_music_simple.js"></script>
         <script src="js/flying_cloud.js"></script>
+        <script src="js/settings.js"></script>
     </head>
     <body>
+        <div class="settings">
+            <button class="settings-btn" id="settings-toggle">
+                <img src="images/settings_logo.png" id="settings-icon" alt="setting icon">
+            </button>
+        </div>
+
+        <!--Settings Panel-->
+        <div class="settings-panel" id="settings-panel">
+            <h2>Settings</h2>
+            <div class="setting-option">
+                <label for="pomodoro-duration">Pomodoro Duration: </label>
+                <input type="number" id="input-duration" min="1" max="60" value="25">
+                <button type="button" class="apply-btn" id="set-duration-btn">Apply</button>
+            </div>
+
+            
+        </div>
+
+        <!-- Overlay-->
+         <div class="overlay" id="overlay"></div>
         <div class="clouds">
             <div class="cloud-1"></div>
             <div class="cloud-2"></div>
@@ -32,6 +53,7 @@
         <div class="btn-list">
             <button class="btn btn-start" type="button">START</button>
             <button class="btn btn-pause" type="button" disabled="true"> PAUSE</button>
+            <button class="btn btn-reset" type="button" disabled="true">RESET</button>
 
         </div>
         
