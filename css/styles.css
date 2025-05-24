@@ -162,6 +162,7 @@ button:disabled,
 #audio-player {
    
     opacity: 0; /* Hidden */
+    width:0;
     transition: width 2s ease, opacity 2s ease;
     pointer-events: none; /* Prevent interaction when hidden */
 

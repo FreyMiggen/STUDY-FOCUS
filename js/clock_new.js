@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded',() =>{
     const bellButton = document.getElementById('bell-toggle');
     const bellIcon = document.getElementById('bell-icon');
     const audioBell = document.getElementById('ring-alarm');
-    let DURATION = 5*60; // default duration
+    let DURATION = 0.5*60; // default duration
     let bellInterval;
 
     // Load alarm audio
@@ -40,12 +40,14 @@ document.addEventListener('DOMContentLoaded',() =>{
     // }
 
     function startBellColorToggle(bellIcon) {
+        // alternating the color of the alarm clock
         let isYellow = false; // Local state
         return setInterval(() => {
             bellIcon.style.backgroundColor = isYellow ? "transparent" : "rgb(227, 136, 66)";
             isYellow = !isYellow;
         }, 250);
     }
+
     bellButton.addEventListener('click', () => {
         console.log('ALARM BELL CLICKED!');
         if (!audioBell.paused) {
@@ -108,6 +110,8 @@ document.addEventListener('DOMContentLoaded',() =>{
     styleSheet.textContent = keyframes;
     document.head.appendChild(styleSheet);
     let totoroStarted = false;
+    let isPause = false;
+    let timeOffset = 0;
 
     // END CODE FOR DEFINING ELEMENTS NEEDED FOR TOTORO
 
@@ -132,17 +136,15 @@ document.addEventListener('DOMContentLoaded',() =>{
 
         timerInterval = setInterval(() => {
             const elapseSeconds = Math.floor((Date.now()-countdownStartTime)/1000);
-            timeLeft = Math.max(DURATION - elapseSeconds,0);
+            timeLeft = Math.max(DURATION - elapseSeconds-timeOffset,0);
             updateDisplay();
             if (timeLeft <= 0) {
-                
                 clearInterval(timerInterval);
                 startButton.disabled = false;
                 pauseButton.disabled = true;
                 timerInterval = null;
-                timeLeft = DURATION;
                 startButton.textContent = 'START';
-                updateDisplay();
+            
                 // ring the bell
                 if (audioBell.paused){
                     audioBell.play().catch(err=>{
@@ -150,7 +152,10 @@ document.addEventListener('DOMContentLoaded',() =>{
                     })
 
                     bellInterval = startBellColorToggle(bellIcon);
+                    
                 }
+                
+
 
                 // move Totoro to the left edge
                 setTimeout(()=>{
@@ -158,8 +163,16 @@ document.addEventListener('DOMContentLoaded',() =>{
                     totoro.style.left = '0px';
                     totoroStarted = false;
 
-                },8000)
+                },8000);
 
+                setTimeout(()=>{
+                    timeLeft = DURATION;
+                    updateDisplay();
+                    console.log('SET CLOCK COLOR BBACK TO NONE')
+                    bellIcon.style.backgroundColor = 'none';
+                },9000);
+
+                
 
             }
         }, 500);
@@ -170,7 +183,8 @@ document.addEventListener('DOMContentLoaded',() =>{
 
         // pause totoro
         totoro.style.animationPlayState = 'paused';
-
+        isPause = true;
+        timeOffset = Math.floor((Date.now()-countdownStartTime)/1000);
         if (timerInterval) {
             // clear
             clearInterval(timerInterval);
@@ -183,6 +197,7 @@ document.addEventListener('DOMContentLoaded',() =>{
 
     function resetCountDown(){
         console.log('RESET COUNTDOWN');
+        timeOffset = 0;
         startButton.disabled = false;
         pauseButton.disabled = true;
         resetButton.disabled = true;
