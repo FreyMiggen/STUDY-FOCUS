@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-theme="day">
     <head>
         <title>Focus - Frey</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -11,25 +11,43 @@
         <script src="js/settings.js"></script>
     </head>
     <body>
+        <div class="stars-container" id="starsContainer"></div>
+        <div class="bubbles-container" id="bubblesContainer"></div>
         <div class="settings">
             <button class="settings-btn" id="settings-toggle">
                 <img src="images/settings_logo.png" id="settings-icon" alt="setting icon">
             </button>
         </div>
 
-        <!--Settings Panel-->
+        <!--SETTINGS PANEL -->
         <div class="settings-panel" id="settings-panel">
             <h2>Settings</h2>
             <div class="setting-option">
-                <label for="pomodoro-duration">Pomodoro Duration: </label>
-                <input type="number" id="input-duration" min="1" max="60" value="25">
-                <button type="button" class="apply-btn" id="set-duration-btn">Apply</button>
+                <div id="setting-option-duration">
+                    <label for="pomodoro-duration">Pomodoro Duration: </label>
+                    <input type="number" id="input-duration" min="1" max="60" value="25">
+                    <button type="button" class="apply-btn" id="set-duration-btn">Apply</button>
+
+                </div>
+                <div id="setting-option-bg">
+                    <label for="bg-select">Background Image: </label>
+                    <select id="bg-select">
+                        <option value="day">Day</option>
+                     
+                        <option value="sunset">Sunset</option>
+                        <option value="night">Night</option>
+
+                    </select>
+                    <button type="button" class="apply-btn" id="set-bg-btn">Apply</button>
+
+                </div>
+
             </div>
 
             
         </div>
 
-        <!-- Overlay-->
+        <!-- OVERLAY END HERE-->
          <div class="overlay" id="overlay"></div>
         <div class="clouds">
             <div class="cloud-1"></div>
